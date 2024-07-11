@@ -1,26 +1,18 @@
 import {
   ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-  Button,
-  Heading,
-  Flex,
-  ListItem,
-  UnorderedList,
 } from "@chakra-ui/react";
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { QuizHome } from "./components/quizHome";
+import { QuizPage } from "./components/quizPage";
+import theme from "./theme/theme";
 
 export const App = () => (
-  <ChakraProvider>
-    <Flex align="center" justify="center" h="90vh">
-      <Box textAlign="center" boxShadow="lg" p="100px">
-        <Heading mb={10}>React理解度チェックアプリ</Heading>
-        <Button colorScheme="teal">クイズスタート！</Button>
-      </Box>
-    </Flex>
+  <ChakraProvider theme={theme}>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<QuizHome />} />
+        <Route path="/quizPage" element={<QuizPage />} />
+      </Routes>
+    </BrowserRouter>
   </ChakraProvider>
 );
