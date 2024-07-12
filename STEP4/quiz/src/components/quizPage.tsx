@@ -52,7 +52,7 @@ export const QuizPage = () => {
       answer: "props",
     },
   ];
-   // カウントダウン開始の処理
+   // カウントダウン
    useEffect(() => {
     let timer: any = null;
     if (countdown > 0) {
@@ -60,18 +60,18 @@ export const QuizPage = () => {
         setCountdown((prevCount) => prevCount - 1);
       }, 1000);
     } else {
-      // カウントダウンが0になったら結果表示画面に遷移
       navigate("/quizResult", { state: { correctAnswers } });
     }
-
-    return () => clearInterval(timer); // クリーンアップ関数でタイマーをクリア
+    return () => clearInterval(timer);
   }, [countdown, navigate, correctAnswers]);
 
+  // クイズの選択肢を押した際の処理
   const handleAnswerClick = (option: string) => {
+    // もしクイズに正解したら
     if (option === questions[questionIndex].answer) {
       setMessage("正解です!その調子👍");
       setMessageColor("success");
-      setCorrectAnswers((prevCount) => prevCount + 1); // 正解した回数をインクリメント
+      setCorrectAnswers((prevCount) => prevCount + 1);
       // 次の質問に進む
       if (questionIndex + 1 < questions.length) {
         setTimeout(() => {
