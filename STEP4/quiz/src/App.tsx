@@ -1,9 +1,10 @@
 import {
   ChakraProvider,
 } from "@chakra-ui/react";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { QuizHome } from "./components/quizHome";
 import { QuizPage } from "./components/quizPage";
+import { QuizResult } from "./components/quizResult";
 import theme from "./theme/theme";
 
 export const App = () => (
@@ -12,6 +13,7 @@ export const App = () => (
       <Routes>
         <Route path="/" element={<QuizHome />} />
         <Route path="/quizPage" element={<QuizPage />} />
+        <Route path="/quizResult" element={<QuizResult />} />
       </Routes>
     </BrowserRouter>
   </ChakraProvider>
